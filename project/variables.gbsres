@@ -1,0 +1,10 @@
+{
+  "_resourceType": "variables",
+  "variables": [
+    {
+      "id": "0",
+      "name": "Scene_Choice",
+      "symbol": "var_scene_choice"
+    }
+  ]
+}

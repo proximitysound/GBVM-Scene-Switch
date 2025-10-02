@@ -1,0 +1,62 @@
+{
+  "_resourceType": "script",
+  "id": "daf20516-1a48-42ff-b43c-d7ba181086c9",
+  "name": "Change Scene Control",
+  "description": "",
+  "variables": {},
+  "actors": {},
+  "symbol": "script_1",
+  "script": [
+    {
+      "command": "EVENT_MENU",
+      "args": {
+        "variable": "0",
+        "items": 5,
+        "option1": "Center",
+        "option2": "North",
+        "option3": "East",
+        "option4": "South",
+        "option5": "West",
+        "option6": "",
+        "option7": "",
+        "option8": "",
+        "cancelOnB": true,
+        "layout": "menu"
+      },
+      "id": "982d2815-27a3-4f8d-be77-64463d7c3ebb"
+    },
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": ".include \"macro.i\"\n    ;Fade Out\n    VM_SET_CONST_INT8       _fade_frames_per_step, 3\n    VM_FADE_OUT             1\n\n    ;Scene Switch\n    VM_SWITCH VAR_SCENE_CHOICE, 5, 0\n            .dw 1,\t1001$\n            .dw 2,\t1002$\n            .dw 3,\t1003$\n            .dw 4,\t1004$\n            .dw 5,\t1005$\n    \n        1001$:\n               VM_RAISE EXCEPTION_CHANGE_SCENE, 3\n                    IMPORT_FAR_PTR_DATA _scene_1\n               VM_JUMP                 10$\n\n        1002$:\n                VM_RAISE EXCEPTION_CHANGE_SCENE, 3\n                    IMPORT_FAR_PTR_DATA _scene_3\n                VM_JUMP                 10$\n\n        1003$:\n                VM_RAISE EXCEPTION_CHANGE_SCENE, 3\n                    IMPORT_FAR_PTR_DATA _scene_4\n                VM_JUMP                 10$\n\n        1004$:\n                VM_RAISE EXCEPTION_CHANGE_SCENE, 3\n                    IMPORT_FAR_PTR_DATA _scene_5\n                VM_JUMP                 10$\n\n        1005$:\n                VM_RAISE EXCEPTION_CHANGE_SCENE, 3\n                    IMPORT_FAR_PTR_DATA _scene_2\n                VM_JUMP                 10$\n                \n10$:",
+        "references": [
+          {
+            "type": "variable",
+            "id": "0"
+          },
+          {
+            "type": "scene",
+            "id": "ddd40557-9926-48d8-9369-f57b2387c762"
+          },
+          {
+            "type": "scene",
+            "id": "72b34c99-0bf0-42fa-a6e7-4c9328d8c3e1"
+          },
+          {
+            "type": "scene",
+            "id": "ca816214-ec98-4595-95d3-c4a5116583e2"
+          },
+          {
+            "type": "scene",
+            "id": "08ad9ecb-4c78-4e66-9da3-3907f0c4d288"
+          },
+          {
+            "type": "scene",
+            "id": "f3a84ad1-c260-4dc6-a2b3-21dbe19e032a"
+          }
+        ]
+      },
+      "id": "e2d1f08a-b73f-43fb-8de8-7f42653b89cd"
+    }
+  ]
+}
